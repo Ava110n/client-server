@@ -1,4 +1,5 @@
 import java.io.BufferedReader
+import java.io.PrintWriter
 import java.net.ServerSocket
 import java.net.Socket
 
@@ -10,9 +11,16 @@ class Server(
         var clientSocket : Socket? = null
         try {
             clientSocket = serverSocket.accept()
-            var bw = clientSocket.getInputStream().bufferedReader()
-            println(bw.readLine())
-            bw.close()
+            var br = clientSocket.getInputStream().bufferedReader()
+            println(br.readLine())
+
+
+            var pw = PrintWriter(clientSocket.getOutputStream())
+            pw.println("hello from server")
+            pw.flush()
+            br.close()
+            pw.close()
+
         }
         catch (e: Exception){
             println(e.message)

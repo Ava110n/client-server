@@ -12,7 +12,12 @@ class Client(
 
             var pw = PrintWriter(socket.getOutputStream())
             pw.println("hello from client")
+            pw.flush()
+
+            var br = socket.getInputStream().bufferedReader()
+            println(br.readLine())
             pw.close()
+            br.close()
         }
         catch (e: Exception){
             println(e.message)
