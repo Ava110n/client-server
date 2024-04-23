@@ -19,14 +19,14 @@ class Client(
             println(e.message)
         }
     }
-    fun send(text: String){
+    fun push(text: String){
         pw = PrintWriter(socket?.getOutputStream())
-        pw?.println("hello from client")
+        pw?.println(text)
         pw?.flush()
     }
-    fun get(){
+    fun pull(): String? {
         br = socket?.getInputStream()?.bufferedReader()
-        println(br?.readLine())
+        return br?.readLine()
     }
     fun finish(){
         pw?.close()

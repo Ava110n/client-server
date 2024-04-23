@@ -15,11 +15,6 @@ class Server(
         var counter = 0
     }
 
-    constructor(v : Int, v1: Int) : this() {
-        port = v
-    }
-
-
     val serverSocket = ServerSocket(port)
     fun start(){
         var clientSocket : Socket? = null
@@ -30,11 +25,11 @@ class Server(
 
 
             var pw = PrintWriter(clientSocket.getOutputStream())
-            pw.println("hello from server")
+            pw.println("hello from server " + counter)
             pw.flush()
             br.close()
             pw.close()
-
+            Thread.sleep(5000)
         }
         catch (e: Exception){
             println(e.message)
