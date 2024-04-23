@@ -1,5 +1,6 @@
 fun main(){
-    while(true) {
+    var s = Server(123, 456)
+    /*while(true) {
         Server().start()
-    }
+    }*/
 }

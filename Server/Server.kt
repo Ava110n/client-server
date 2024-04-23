@@ -4,7 +4,21 @@ import java.net.ServerSocket
 import java.net.Socket
 
 class Server(
-    val port : Int = 8080) {
+    var port : Int = 8080) {
+
+
+
+    init{
+        counter++
+    }
+    companion object {
+        var counter = 0
+    }
+
+    constructor(v : Int, v1: Int) : this() {
+        port = v
+    }
+
 
     val serverSocket = ServerSocket(port)
     fun start(){
